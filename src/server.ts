@@ -7,6 +7,7 @@ import multipart from '@fastify/multipart'
 import { memoriesRoutes } from './routes/memories'
 import { authRoutes } from './routes/auth'
 import { uploadRoutes } from './routes/upload'
+import { rootRoutes } from './routes/root'
 import fastifyStatic from '@fastify/static'
 import { resolve } from 'path'
 
@@ -31,12 +32,12 @@ app.register(jwt, {
 app.register(authRoutes)
 app.register(memoriesRoutes)
 app.register(uploadRoutes)
+app.register(rootRoutes)
 
 app
   .listen({
     port: 3333,
   })
   .then(() => {
-    // console.log('😎HTTP server running on http://localhost:3333')
-    console.log(app.server.address())
+    console.log('😎HTTP server running on http://localhost:3333')
   })
